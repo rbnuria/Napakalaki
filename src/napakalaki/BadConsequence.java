@@ -5,6 +5,7 @@
  */
 package napakalaki;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 /**
@@ -22,62 +23,32 @@ public class BadConsequence {
     //Numero tesoros ocultos perdidos
     private int nHiddenTreasures;
     //Muerte o no
-    private boolean death;
-        
+    private boolean death;      
     private ArrayList<TreasureKind> specificHiddenTreasures;
     private ArrayList<TreasureKind> specificVisibleTreasures;
      
 
     //Constructores
     public BadConsequence(String text, int levels, int nVisible, int nHidden){
-        setText(text);
-        setLevels(levels);
-        setnVisibleTreasures(nVisible);
-        setnHiddenTreasures(nHidden);
-        
-    
-    }
-    
-    public BadConsequence(String text, boolean death){
-        setText(text);
-        setDeath(death);
-    }
-    
-    public BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible, ArrayList<TreasureKind> tHidden){
-        setText(text);
-        setLevels(levels);
-        setSpecificHiddenTreasure(tHidden);
-        setSpecificVisibleTreasure(tVisible);
-    }
-    
-    //Setters
-    private void setText(String text1){
-        text = text1;
-    }
-    
-    private void setLevels(int levels1){
-        levels = levels1;
-    }
-    
-    private void setnVisibleTreasures(int nVisible){
+        this.text = text;
+        this.levels = levels;
         nVisibleTreasures = nVisible;
-    }
-    
-    private void setnHiddenTreasures(int nHidden){
         nHiddenTreasures = nHidden;
     }
     
-    private void setDeath(boolean death1){
-        death = death1;
+    public BadConsequence(String text, boolean death){
+        this.text = text;
+        this.death = death;
     }
     
-    private void setSpecificHiddenTreasure(ArrayList<TreasureKind> tHidden){
-        specificHiddenTreasures = tHidden;
+    public BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible, ArrayList<TreasureKind> tHidden){
+        this.text = text;
+        this.levels = levels;
+        this.specificVisibleTreasures = tVisible;
+        this.specificHiddenTreasures = tHidden;
+        
     }
     
-    private void setSpecificVisibleTreasure(ArrayList<TreasureKind> tVisible){
-        specificVisibleTreasures = tVisible;
-    }
     
     //Getters
     public String getText(){
@@ -100,12 +71,23 @@ public class BadConsequence {
         return death;
     }
     
+    public String ArrayToString(ArrayList<TreasureKind> t){
+        String auxiliar = "";
+        for(TreasureKind k : t){
+            auxiliar=auxiliar+k.toString();
+        }
+        
+        return auxiliar;
+    }
+    
     public String toString(){
 
-        return "text =" + text + " levels =" + Integer.toString(levels) + 
-                " nVisibleTreasures = " + Integer.toString(nVisibleTreasures) +
-                " nHiddenTreasures = " + Integer.toString(nHiddenTreasures)+
-                " death = " + ((death == true) ? " true" : "false");
+        return "text = " + text + "\nlevels =" + Integer.toString(levels) + 
+                "\nnVisibleTreasures = " + Integer.toString(nVisibleTreasures) +
+                "\nnHiddenTreasures = " + Integer.toString(nHiddenTreasures)+
+                "\ndeath = " + ((death == true) ? " true" : "false" ) +
+                "\nTesoros Visibles: " + ArrayToString(this.specificVisibleTreasures) +
+                "\nTesoros Ocultos: " + ArrayToString(this.specificHiddenTreasures);
                 
     }
     

@@ -19,30 +19,13 @@ public class Monster {
     private BadConsequence badConsequence;
  
     //Constructores
-    public Monster(String name, int level, BadConsequence bc, Prize price){
-        setName(name);
-        setCombatLevel(level);
-        setBadConsequence(bc);
-        setPrice(price);
+    public Monster(String name, int level, BadConsequence bc, Prize prize){
+        this.name = name;
+        this.combatLevel = level;
+        this.prize = prize;
+        this.badConsequence = bc;
     }
-    
-    //Setters
-    private void setName(String nombre){
-        name = nombre;
-    }
-    
-    private void setCombatLevel(int cLevel){
-        combatLevel = cLevel;
-    }
-    
-    private void setBadConsequence(BadConsequence bc){
-        badConsequence = bc;
-    }
-    
-    private void setPrice(Prize price){
-        prize = price;
-    }
-    
+   
     //Getters
     public String getName(){
         return name;

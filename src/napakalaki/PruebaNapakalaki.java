@@ -5,6 +5,8 @@
  */
 package napakalaki;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author nuria
@@ -24,6 +26,7 @@ public class PruebaNapakalaki {
         int tOcultos = 1;
         boolean muerte = true;
         
+        
         BadConsequence malRollo1, malRollo2;
         malRollo1 = new BadConsequence(texto1, niveles, tVisibles, tOcultos);
         malRollo2 = new BadConsequence(texto2, muerte);
@@ -42,6 +45,16 @@ public class PruebaNapakalaki {
         Monster monstruo;
         monstruo = new Monster(nombre, nivelCombate, malRollo1, premio);
        
+        ArrayList<TreasureKind> tesoros_visibles;
+        tesoros_visibles = new ArrayList<>();
+        tesoros_visibles.add(TreasureKind.ARMOR);
+        tesoros_visibles.add(TreasureKind.ONEHAND);
+        
+        ArrayList<TreasureKind> tesoros_invisibles;
+        tesoros_invisibles = new ArrayList<>();
+        tesoros_invisibles.add(TreasureKind.BOTHHANDS);
+        tesoros_invisibles.add(TreasureKind.ONEHAND);
+        
         
         System.out.println("Estado del monstruo:" + premio.toString() + "\n");
         System.out.println("Estado del premio:" + monstruo.toString() + "\n");
