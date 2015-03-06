@@ -89,23 +89,24 @@ public class BadConsequence {
     
     public String ArrayToString(ArrayList<TreasureKind> t){
         String auxiliar = "";
-        for(TreasureKind k : t){
-            auxiliar=auxiliar+k.toString();
+        for(TreasureKind it : t){
+            auxiliar=auxiliar+it.toString()+" ";
         }
         
         return auxiliar;
     }
     
     public String toString(){
-        String nivelImprimir;
         
         return "\ntext = " + text + 
                 "\nlevels =" + ((levels != -1) ? Integer.toString(levels) : "No quita niveles") + 
                 "\nnVisibleTreasures = " + ((nVisibleTreasures != -1) ? Integer.toString(nVisibleTreasures) : "No quia tesoros visibles") +
                 "\nnHiddenTreasures = " +((nHiddenTreasures != -1) ? Integer.toString(nHiddenTreasures) : "No quita tesoros ocultos. ")+
                 "\ndeath = " + ((death == true) ? " true" : "false" ) +
-                "\nTesoros Visibles: " + ((!(specificVisibleTreasures.isEmpty())) ? ArrayToString(this.specificVisibleTreasures) : "No quita tesoros visibles") +
-                "\nTesoros Ocultos: " + ((!(specificHiddenTreasures.isEmpty())) ? ArrayToString(this.specificHiddenTreasures) : "No quita tesoros ocultos");
+                "\nTesoros Visibles: " + 
+                ((!(specificVisibleTreasures.isEmpty())) ? ArrayToString(this.specificVisibleTreasures) : "No quita tesoros visibles") +
+                "\nTesoros Ocultos: " + 
+                ((!(specificHiddenTreasures.isEmpty())) ? ArrayToString(this.specificHiddenTreasures) : "No quita tesoros ocultos");
                 
     }
     

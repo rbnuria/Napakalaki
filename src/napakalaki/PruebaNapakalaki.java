@@ -23,7 +23,7 @@ public class PruebaNapakalaki {
         String texto2 = "Moriras!!!";
         int niveles = 3;
         int tVisibles = 2;
-        int tOcultos = 1;
+        int tOcultos = 3;
         boolean muerte = true;
         
         ArrayList<TreasureKind> tesoros_visibles;
@@ -54,10 +54,10 @@ public class PruebaNapakalaki {
         Monster monstruo;
         monstruo = new Monster(nombre, nivelCombate, malRollo2, premio);    
      
-        System.out.println("Estado del monstruo:" + premio.toString() + "\n");
-        System.out.println("Estado del premio:" + monstruo.toString() + "\n");
+        System.out.println("Estado del premio:" + premio.toString() + "\n");
+        System.out.println("Estado del monstruo:" + monstruo.toString() + "\n");
         System.out.println("Estado del mal rollo:" + malRollo1.toString() + "\n");
-                          
+        
     }
     
 }
