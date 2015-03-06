@@ -30,7 +30,7 @@ public class Prize {
     
 
     public String toString(){
-        return "Treasures =" + Integer.toString(treasures) + " levels =" +
+        return "\nTreasures =" + Integer.toString(treasures) + "\nlevels =" +
                 Integer.toString(levels);
     }
     

@@ -97,13 +97,15 @@ public class BadConsequence {
     }
     
     public String toString(){
-
-        return "text = " + text + "\nlevels =" + Integer.toString(levels) + 
-                "\nnVisibleTreasures = " + Integer.toString(nVisibleTreasures) +
-                "\nnHiddenTreasures = " + Integer.toString(nHiddenTreasures)+
+        String nivelImprimir;
+        
+        return "\ntext = " + text + 
+                "\nlevels =" + ((levels != -1) ? Integer.toString(levels) : "No quita niveles") + 
+                "\nnVisibleTreasures = " + ((nVisibleTreasures != -1) ? Integer.toString(nVisibleTreasures) : "No quia tesoros visibles") +
+                "\nnHiddenTreasures = " +((nHiddenTreasures != -1) ? Integer.toString(nHiddenTreasures) : "No quita tesoros ocultos. ")+
                 "\ndeath = " + ((death == true) ? " true" : "false" ) +
-                "\nTesoros Visibles: " + ArrayToString(this.specificVisibleTreasures) +
-                "\nTesoros Ocultos: " + ArrayToString(this.specificHiddenTreasures);
+                "\nTesoros Visibles: " + ((!(specificVisibleTreasures.isEmpty())) ? ArrayToString(this.specificVisibleTreasures) : "No quita tesoros visibles") +
+                "\nTesoros Ocultos: " + ((!(specificHiddenTreasures.isEmpty())) ? ArrayToString(this.specificHiddenTreasures) : "No quita tesoros ocultos");
                 
     }
     
