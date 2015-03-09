@@ -18,7 +18,7 @@ public class PruebaNapakalaki {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        /*
         //Mal rollo
         String texto1 = "Has perdido.";
         String texto2 = "Moriras!!!";
@@ -58,7 +58,7 @@ public class PruebaNapakalaki {
         System.out.println("Estado del premio:" + premio.toString() + "\n");
         System.out.println("Estado del monstruo:" + monstruo.toString() + "\n");
         System.out.println("Estado del mal rollo:" + malRollo1.toString() + "\n");
-        
+        */
         
         /************  CREACIÓN DE LOS MONSTRUOS ***************/
         ArrayList<Monster> monstruos = new ArrayList();
@@ -175,44 +175,66 @@ public class PruebaNapakalaki {
     
     
     /************ MOSTRAMOS LOS MONSTRUOS CON LAS SIGUIENTES CARACTERISTICAS ***********/
+    System.out.println("******************************************************************"
+            + "****************************************************************************"
+            + "*****************************************************************************"
+            + "*********"); 
+    String aImprimir = "";
     
     //Nivel de combate superior a 10
     System.out.println("Los monstruos con un nivel de combate mayor a 10 son: \n");
     for(Monster it : monstruos){
         if(it.getCombatLevel() > 10){
-            it.toString();
-        }
-    }
+            aImprimir += it.toString() + "\n";                
+        }     
+    } 
+    System.out.println(aImprimir);
+    aImprimir = "\n";
     
     //Monstruos cuyo malRollo implica solo perdida de niveles
-    System.out.println("Los monstruos con un nivel de combate mayor a 10 son: \n");
+    System.out.println("Monstruos cuyo malRollo implica solo perdida de niveles son: \n");
     for(Monster it : monstruos){
         if(it.getBadConsequence().getLevels() != 0 && it.getBadConsequence().getnHiddenTreasures() == 0 &&
                 it.getBadConsequence().getnVisibleTreasures() == 0){
-            it.toString();
+            aImprimir += it.toString() + "\n";
         }
     }
+    System.out.println(aImprimir);
+    aImprimir = "\n";
     
     //Monstruos con un buenRollo que implica ganancia de niveles superior a 1
     System.out.println("Monstruos con un buenRollo que implica ganancia de niveles superior a 1 son: \n");
     for(Monster it : monstruos){
-        if(it.getPrize().getLevels() > 1){
-           it.toString();
+        if(it.getPrize().getLevels() >= 2){
+            aImprimir += it.toString() + "\n";
         }
     }
+    System.out.println(aImprimir);
+    aImprimir = "\n";
    
     //Monstruos cuyo malRollo implique la perdida de algun ONEHAND (visible u oculta):
     System.out.println("Monstruos cuyo malRollo implique la perdida de algun ONEHAND (visible u oculta) son :\n");
     for(Monster it : monstruos){
-        if(it.getBadConsequence().getSpecificHiddenTreasures())
+        Boolean esValido = false;
+        for(TreasureKind it2 : it.getBadConsequence().getSpecificVisibleTreasures()){
+            if(it2 == TreasureKind.ONEHAND){
+                esValido = true;
+            }
+        }
+        
+        for(TreasureKind it2 : it.getBadConsequence().getSpecificHiddenTreasures()){
+            if(it2 == TreasureKind.ONEHAND){
+                esValido = true;
+            }
+        }
+        
+        if(esValido == true){
+            aImprimir += it.toString() + "\n"; 
+        }
     }
-    
-   
-    
-    
-    
-    
-    
+    System.out.println(aImprimir);
 }
+}
+    
     
 

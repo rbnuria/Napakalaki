@@ -15,8 +15,8 @@ public class Prize {
     
     //Constructor 
     public Prize(int treasures, int levels){
-        treasures = 0;
-        levels = 0;
+        this.treasures = treasures;
+        this.levels = levels;
     }
     
     //Getters (¿Son publicos?)
