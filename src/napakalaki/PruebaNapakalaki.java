@@ -205,7 +205,7 @@ public class PruebaNapakalaki {
     //Monstruos con un buenRollo que implica ganancia de niveles superior a 1
     System.out.println("Monstruos con un buenRollo que implica ganancia de niveles superior a 1 son: \n");
     for(Monster it : monstruos){
-        if(it.getPrize().getLevels() >= 2){
+        if(it.getPrize().getLevels() > 1){
             aImprimir += it.toString() + "\n";
         }
     }
