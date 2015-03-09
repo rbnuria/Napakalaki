@@ -35,6 +35,14 @@ public class Monster {
         return combatLevel;
     }
     
+    public BadConsequence getBadConsequence(){
+        return badConsequence;
+    }
+    
+    public Prize getPrize(){
+        return prize;
+    }
+    
     public String toString(){
         return "\nname = " + name + "\ncombatLevel = " + Integer.toString(combatLevel) +
                 "\nprice = " + prize.toString() + "\nbadConsequence = " + badConsequence.toString();

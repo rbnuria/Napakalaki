@@ -60,8 +60,8 @@ public class BadConsequence {
         this.specificHiddenTreasures = tHidden;
         
         //Valores por defecto
-        nVisibleTreasures = -1;
-        nHiddenTreasures = -1;
+        nVisibleTreasures = tVisible.size();
+        nHiddenTreasures = tHidden.size();
         death = false;
     }
     
@@ -85,6 +85,14 @@ public class BadConsequence {
 
     public boolean getDeath(){
         return death;
+    }
+    
+    public ArrayList<TreasureKind> getSpecificHiddenTreasures(){
+        return specificHiddenTreasures;
+    }
+    
+    public ArrayList<TreasureKind> getSpecificVisibleTreasures(){
+        return specificVisibleTreasures;
     }
     
     public String ArrayToString(ArrayList<TreasureKind> t){
