@@ -119,7 +119,40 @@ public class PruebaNapakalaki {
         badConsequence = new BadConsequence("Toses los pulmones y pierdes dos niveles.", 2, 0,0);
         prize = new Prize(1,1);
         monstruos.add(new Monster("La que redacta en las tinieblas", 2, badConsequence, prize));
-             
+        //Los hondos
+        badConsequence = new BadConsequence("Estos monstruos resultan bastante superficiales y te aburren mortalmente.Estas muerto.", true);
+        prize = new Prize(2,1);
+        monstruos.add(new Monster("Los hondos", 8, badConsequence, prize));
+        //Semillas Cthulhu
+        badConsequence = new BadConsequence("Pierdes 2 niveles y 2 tesoros ocultos.", 0, 2,0);
+        prize = new Prize(2,1);
+        monstruos.add(new Monster("Semillas Cthulhu", 4, badConsequence, prize));
+         //Dameargo
+        badConsequence = new BadConsequence("Te intentas escaquear.Pierdes una mano visible.", 0, new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), new ArrayList());
+        prize = new Prize(2,1);
+        monstruos.add(new Monster("Dameargo", 1, badConsequence, prize));  
+        //Pollipólipo volante
+        badConsequence = new BadConsequence("Da mucho asquito.Pierdes tres niveles.", 3,0,0);
+        prize = new Prize(1,1);
+        monstruos.add(new Monster("Pollipolito volante", 3, badConsequence, prize));
+        //YskhtihyssgGoth
+        badConsequence = new BadConsequence("No le hace gracia que pronuncien mal su nombre.Estás muerto.", true);
+        prize = new Prize(3,1);
+        monstruos.add(new Monster("YskhtihyssgGoth", 12, badConsequence, prize));
+        //Familia feliz
+        badConsequence = new BadConsequence("La familia te atrapa.Estás muerto.", true);
+        prize = new Prize(4,1);
+        monstruos.add(new Monster("YskhtihyssgGoth", 1, badConsequence, prize));
+        //Ghador
+        badConsequence = new BadConsequence("Hija de Elendur, nieta de Isildur,Señora de Adra.Tiene buen gusto y solo buen rollito", false);
+        prize = new Prize(5,5);
+        monstruos.add(new Monster("Ghador", 20, badConsequence, prize));
+
+        //Bicéfalo
+        badConsequence = new BadConsequence("Te faltan manos para tanta cabeza.", 3,
+                new ArrayList(Arrays.asList(TreasureKind.ONEHAND,TreasureKind.BOTHHANDS)), new ArrayList());
+        prize = new Prize(1,1);
+        monstruos.add(new Monster("Bicéfalo", 20, badConsequence, prize));
     }
     
 }
