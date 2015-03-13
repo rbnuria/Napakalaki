@@ -175,14 +175,11 @@ public class PruebaNapakalaki {
     
     
     /************ MOSTRAMOS LOS MONSTRUOS CON LAS SIGUIENTES CARACTERISTICAS ***********/
-    System.out.println("******************************************************************"
-            + "****************************************************************************"
-            + "*****************************************************************************"
-            + "*********"); 
+ 
     String aImprimir = "";
     
     //Nivel de combate superior a 10
-    System.out.println("Los monstruos con un nivel de combate mayor a 10 son: \n");
+    System.out.println("\nLos monstruos con un nivel de combate mayor a 10 son:");
     for(Monster it : monstruos){
         if(it.getCombatLevel() > 10){
             aImprimir += it.toString() + "\n";                
@@ -192,7 +189,7 @@ public class PruebaNapakalaki {
     aImprimir = "\n";
     
     //Monstruos cuyo malRollo implica solo perdida de niveles
-    System.out.println("Monstruos cuyo malRollo implica solo perdida de niveles son: \n");
+    System.out.println("\nMonstruos cuyo malRollo implica solo perdida de niveles son: ");
     for(Monster it : monstruos){
         if(it.getBadConsequence().getLevels() != 0 && it.getBadConsequence().getnHiddenTreasures() == 0 &&
                 it.getBadConsequence().getnVisibleTreasures() == 0){
@@ -203,7 +200,7 @@ public class PruebaNapakalaki {
     aImprimir = "\n";
     
     //Monstruos con un buenRollo que implica ganancia de niveles superior a 1
-    System.out.println("Monstruos con un buenRollo que implica ganancia de niveles superior a 1 son: \n");
+    System.out.println("\nMonstruos con un buenRollo que implica ganancia de niveles superior a 1 son:");
     for(Monster it : monstruos){
         if(it.getPrize().getLevels() > 1){
             aImprimir += it.toString() + "\n";
@@ -213,7 +210,7 @@ public class PruebaNapakalaki {
     aImprimir = "\n";
    
     //Monstruos cuyo malRollo implique la perdida de algun ONEHAND (visible u oculta):
-    System.out.println("Monstruos cuyo malRollo implique la perdida de algun ONEHAND (visible u oculta) son :\n");
+    System.out.println("\nMonstruos cuyo malRollo implique la perdida de algun ONEHAND (visible u oculta) son :");
     for(Monster it : monstruos){
         Boolean esValido = false;
         for(TreasureKind it2 : it.getBadConsequence().getSpecificVisibleTreasures()){
