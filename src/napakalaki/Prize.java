@@ -10,6 +10,7 @@ package napakalaki;
  * @author nuria
  */
 public class Prize {
+    //Atributos de visibilidad privada
     private int treasures;
     private int levels;
     
