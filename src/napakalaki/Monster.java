@@ -45,7 +45,7 @@ public class Monster {
     
     public String toString(){
         return "\nname = " + name + "\ncombatLevel = " + Integer.toString(combatLevel) +
-                "\nprize = " + prize.toString() + "\nbadConsequence = " + badConsequence.toString();
+                "\nprize : " + prize.toString() + "\nbadConsequence : " + badConsequence.toString();
     }
     
     
