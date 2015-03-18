@@ -20,7 +20,7 @@ public class Prize {
         this.levels = levels;
     }
     
-    //Getters (¿Son publicos?)
+    //Getters 
     public int getTreasures(){
         return treasures;
     }
@@ -30,8 +30,9 @@ public class Prize {
     }
     
 
+   
     public String toString(){
-        return "\nTreasures =" + Integer.toString(treasures) + "\nlevels =" +
+        return "\nTesoros =" + Integer.toString(treasures) + "\nNiveles =" +
                 Integer.toString(levels);
     }
     

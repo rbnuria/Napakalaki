@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class BadConsequence {
     //Atributos de visibilidad privada
+    
     //Texto que dice un mal rollo
     private String text;
     //Numero de niveles perdidos
@@ -23,8 +24,10 @@ public class BadConsequence {
     //Numero tesoros ocultos perdidos
     private int nHiddenTreasures;
     //Muerte o no
-    private boolean death;      
+    private boolean death;   
+    //Tesoros especificos ocultos que pierdes
     private ArrayList<TreasureKind> specificHiddenTreasures;
+    //Tesoros especificos visibles que pierdes
     private ArrayList<TreasureKind> specificVisibleTreasures;
      
 
@@ -60,8 +63,8 @@ public class BadConsequence {
         this.specificHiddenTreasures = tHidden;
         
         //Valores por defecto
-        nVisibleTreasures = tVisible.size();
-        nHiddenTreasures = tHidden.size();
+        nVisibleTreasures = -1;
+        nHiddenTreasures = -1;
         death = false;
     }
     
@@ -106,11 +109,11 @@ public class BadConsequence {
     
     public String toString(){
         
-        return "\ntext = " + text + 
-                "\nlevels =" + ((levels != -1) ? Integer.toString(levels) : "No quita niveles") + 
-                "\nnVisibleTreasures = " + ((nVisibleTreasures != -1) ? Integer.toString(nVisibleTreasures) : "No quia tesoros visibles") +
-                "\nnHiddenTreasures = " +((nHiddenTreasures != -1) ? Integer.toString(nHiddenTreasures) : "No quita tesoros ocultos. ")+
-                "\ndeath = " + ((death == true) ? " true" : "false" ) +
+        return "\nTexto = " + text + 
+                "\nNiveles =" + ((levels != -1) ? Integer.toString(levels) : "No quita niveles") + 
+                "\nNumero tesoros Visibles = " + ((nVisibleTreasures != -1) ? Integer.toString(nVisibleTreasures) : "No quia tesoros visibles") +
+                "\nNumero tesoros ocultos = " +((nHiddenTreasures != -1) ? Integer.toString(nHiddenTreasures) : "No quita tesoros ocultos. ")+
+                "\nMuerte = " + ((death == true) ? " true" : "false" ) +
                 "\nTesoros Visibles: " + 
                 ((!(specificVisibleTreasures.isEmpty())) ? ArrayToString(this.specificVisibleTreasures) : "No quita tesoros visibles") +
                 "\nTesoros Ocultos: " + 
