@@ -68,6 +68,13 @@ public class BadConsequence {
         death = false;
     }
     
+    /*public boolean isEmpty(){
+        
+    }
+    
+    public boolean kills(){
+        
+    }*/
     
     //Getters
     public String getText(){
@@ -98,6 +105,21 @@ public class BadConsequence {
         return specificVisibleTreasures;
     }
     
+    /*
+    public void substractVisibleTreasure(Treasure t){
+        
+    }
+    
+    public void substractHiddenTreasure(Treasure t){
+        
+    }
+    
+    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
+        
+    }
+    */
+    
+    
     public String ArrayToString(ArrayList<TreasureKind> t){
         String auxiliar = "";
         for(TreasureKind it : t){
@@ -107,6 +129,7 @@ public class BadConsequence {
         return auxiliar;
     }
     
+
     public String toString(){
         
         return "\nTexto = " + text + 
@@ -120,6 +143,8 @@ public class BadConsequence {
                 ((!(specificHiddenTreasures.isEmpty())) ? ArrayToString(this.specificHiddenTreasures) : "No quita tesoros ocultos");
                 
     }
+    
+    
     
 }
 
