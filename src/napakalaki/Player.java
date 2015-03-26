@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Player {
     //Datos miembros especificados
-    private boolean dead = true; //Podemos ponerlo en constructor
+    private boolean dead;
     private String name;
     private int level;
     private final int MAXHIDDENTREASURES = 4;
@@ -23,21 +23,30 @@ public class Player {
     private ArrayList<Treasure> visibleTreasures;
     private BadConsequence pendingBadConsequence;
     
-    /*
-    private void bringToLive(){
+    public Player(String name){
+        this.dead = true;
+        this.name = name;
         
+        //Valores por defecto
+        level = 1;
+        //¿Inicializar el resto? (Son clases hechas por mi)
+    }
+    
+    
+    private void bringToLive(){
+        this.dead = true;
     }
     
     private void incrementeLevels(int l){
-        
+        this.level += l;
     }
     
     private void decrementLevels(int l){
-        
+        this.level -= l;
     }
     
     private void setPendingBadConsequence(BadConsequence b){
-        
+        pendingBadConsequence = b; 
     }
     
     private void die(){
@@ -49,14 +58,20 @@ public class Player {
     }
     
     private void dieIfNoTreasures(){
-        
+        if(this.hiddenTreasures.isEmpty() && this.visibleTreasures.isEmpty()){
+            dead = true;
+        }
     }
     
     private boolean canIBuyLevels(int l){
+        if(level + l < 10){
+            return true;
+        }else
+            return false;
         
     }
     
-    
+    /*
     protected float computeGoldCoinsValue(ArrayList<Treasure> t){
         
     }
@@ -91,38 +106,54 @@ public class Player {
     
     public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
         
-    }
+    }*/
     
     public int getCombatLevel(){
-        return level;
+        int combatLevel = level;
+        boolean collar = false; 
+        for(Treasure it : visibleTreasures){
+            if(it.getType() == TreasureKind.NECKLACE)
+               collar = true;
+        }
+        
+        for(Treasure it : visibleTreasures){
+            if(collar){
+                combatLevel += it.getMaxBonus();
+            }else
+                combatLevel += it.getMinBonus();
+        }
+        
+        return combatLevel;     
     }
     
     public boolean validState(){
-        
+        if(this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size() <= 4)
+            return true;
+        else
+            return false;
     }
     
+    /*
     public boolean initTreasures(){
         
     }
     
+    
     public boolean isDead(){
-        
+        return dead;
     }
     
     public boolean hasVisibleTreasures(){
-        
-    }
+        return !(this.visibleTreasures.isEmpty());
+    }    
     
-    public Player(String name){
-        
-    }
-    
+
     public ArrayList<Treasure> getHiddenTreasures(){
-        
+        return hiddenTreasures;
     }
     
     public ArrayList<Treasure> getVisibleTreasures(){
-        
+        return visibleTreasures;
     }
     */
 
