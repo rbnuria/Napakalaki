@@ -55,6 +55,7 @@ public class BadConsequence {
         specificHiddenTreasures = new ArrayList();
         specificVisibleTreasures = new ArrayList();
     }
+    /* Yo no creo que esto se pueda hacer ni esté bien
     public BadConsequence(){
         this.text = "";
         this.death = false;        
@@ -64,7 +65,7 @@ public class BadConsequence {
         nHiddenTreasures = -1;
         specificHiddenTreasures = new ArrayList();
         specificVisibleTreasures = new ArrayList();
-    }
+    }*/
     public BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible, ArrayList<TreasureKind> tHidden){
         this.text = text;
         this.levels = levels;
