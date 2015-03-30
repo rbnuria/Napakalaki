@@ -29,20 +29,29 @@ public class Player {
         
         //Valores por defecto
         level = 1;
-        //¿Inicializar el resto? (Son clases hechas por mi)
+        hiddenTreasures = new ArrayList();
+        visibleTreasures = new ArrayList();
     }
     
     
-    private void bringToLive(){//no lo entiendo
-        this.dead = true;
+    private void bringToLive(){
+        this.dead = false;
     }
     
     private void incrementeLevels(int l){//los niveles no pueden ser mayores que 10
         this.level += l;
+        
+        if(level > 10){
+            level = 10;
+        }
     }
     
-    private void decrementLevels(int l){//los niveles no pueden menores que 1
+    private void decrementLevels(int l){
         this.level -= l;
+        
+        if(level < 1){
+            level = 1;
+        }
     }
     
     private void setPendingBadConsequence(BadConsequence b){
@@ -60,6 +69,7 @@ public class Player {
     private void dieIfNoTreasures(){
         if(this.hiddenTreasures.isEmpty() && this.visibleTreasures.isEmpty()){
             dead = true;
+            level = 1;
         }
     }
     
