@@ -55,7 +55,16 @@ public class BadConsequence {
         specificHiddenTreasures = new ArrayList();
         specificVisibleTreasures = new ArrayList();
     }
-    
+    public BadConsequence(){
+        this.text = "";
+        this.death = false;        
+        //Valores por defecto
+        levels = -1;
+        nVisibleTreasures = -1;
+        nHiddenTreasures = -1;
+        specificHiddenTreasures = new ArrayList();
+        specificVisibleTreasures = new ArrayList();
+    }
     public BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible, ArrayList<TreasureKind> tHidden){
         this.text = text;
         this.levels = levels;
@@ -68,13 +77,15 @@ public class BadConsequence {
         death = false;
     }
     
-    /*public boolean isEmpty(){
-        
+    
+    public boolean isEmpty(){
+        return ("".equals(text))&&(levels==-1)&&(nVisibleTreasures==-1)&&(nHiddenTreasures==-1)&&(death==false)&&(specificVisibleTreasures.isEmpty())&&(specificHiddenTreasures.isEmpty());     
+                
     }
     
     public boolean kills(){
-        
-    }*/
+        return death;
+    }
     
     //Getters
     public String getText(){

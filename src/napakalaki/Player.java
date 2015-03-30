@@ -33,15 +33,15 @@ public class Player {
     }
     
     
-    private void bringToLive(){
+    private void bringToLive(){//no lo entiendo
         this.dead = true;
     }
     
-    private void incrementeLevels(int l){
+    private void incrementeLevels(int l){//los niveles no pueden ser mayores que 10
         this.level += l;
     }
     
-    private void decrementLevels(int l){
+    private void decrementLevels(int l){//los niveles no pueden menores que 1
         this.level -= l;
     }
     
@@ -108,7 +108,7 @@ public class Player {
         
     }*/
     
-    public int getCombatLevel(){
+    public int getCombatLevel(){//hay dos bucles for para recorrer lo mismo, lo puedes hacer solo en uno
         int combatLevel = level;
         boolean collar = false; 
         for(Treasure it : visibleTreasures){
