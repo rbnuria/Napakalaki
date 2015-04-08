@@ -80,7 +80,7 @@ public class BadConsequence {
     
     
     public boolean isEmpty(){
-        return ("".equals(text))&&(levels==-1)&&(nVisibleTreasures==-1)&&(nHiddenTreasures==-1)&&(death==false)&&(specificVisibleTreasures.isEmpty())&&(specificHiddenTreasures.isEmpty());     
+        return (levels==-1)&&(nVisibleTreasures==-1)&&(nHiddenTreasures==-1)&&(specificVisibleTreasures.isEmpty())&&(specificHiddenTreasures.isEmpty());     
                 
     }
     

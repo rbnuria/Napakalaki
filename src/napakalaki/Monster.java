@@ -48,7 +48,7 @@ public class Monster {
                 "\nBuen rollo : " + prize.toString() + "\nMal rollo : " + badConsequence.toString();
     }
     
-    
+ 
 
     
 }
