@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package napakalaki;
+package Model;
 
 import java.util.ArrayList;
 
@@ -137,7 +137,7 @@ public class Player {
     }
     
     public boolean validState(){
-        if(this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size() <= 4)
+        if(this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size() <= MAXHIDDENTREASURES)
             return true;
         else
             return false;

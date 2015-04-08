@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package napakalaki;
+package Model;
 
 import java.sql.Array;
 import java.util.ArrayList;
@@ -80,8 +80,8 @@ public class BadConsequence {
     
     
     public boolean isEmpty(){
-        return (levels==-1)&&(nVisibleTreasures==-1)&&(nHiddenTreasures==-1)&&(specificVisibleTreasures.isEmpty())&&(specificHiddenTreasures.isEmpty());     
-                
+        return (levels==-1)&&(nVisibleTreasures==-1)&&(nHiddenTreasures==-1)&&(specificVisibleTreasures.isEmpty())
+                &&(specificHiddenTreasures.isEmpty() && death == false);                    
     }
     
     public boolean kills(){

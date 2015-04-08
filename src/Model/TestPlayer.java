@@ -3,14 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package napakalaki;
+package Model;
 
 /**
  *
  * @author nuria
  */
-public enum TreasureKind {
-    ARMOR, ONEHAND, BOTHHANDS, HELMET, SHOE, NECKLACE
-}
-    
+public class TestPlayer {
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Player jugador = new Player("Nurica");
+
+    }
+    
+}

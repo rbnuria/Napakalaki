@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package napakalaki;
+package Model;
 
 /**
  *
@@ -17,7 +17,11 @@ class Treasure {
     private TreasureKind type;
     
     public Treasure(String n, int g, int min, int max, TreasureKind t){
-        
+        this.name = n;
+        this.goldCoins = g;
+        this.minBonus = min;
+        this.maxBonus = max;
+        this.type = t;
     }
     
     public String getName(){

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package napakalaki;
+package Model;
 
 import static java.sql.Types.NULL;
 
@@ -14,8 +14,7 @@ import static java.sql.Types.NULL;
 public class Dice {
     private static final Dice instance = new Dice();
     
-    private Dice(){      
-    }
+    private Dice(){}
     
     
     public static Dice getInstance(){
