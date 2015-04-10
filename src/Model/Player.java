@@ -63,7 +63,13 @@ public class Player {
     }
     
     private void discardNecklaceIfVisible(){
-        
+        for(int i=0;i<visibleTreasures.size();i++){
+            if(visibleTreasures.get(i).getType()==TreasureKind.NECKLACE){
+                CardDealer dealer=CardDealer.getInstance();
+                dealer.giveTreasureBack(visibleTreasures.get(i));
+                visibleTreasures.remove(visibleTreasures.get(i));
+            }
+        }
     }
     
     private void dieIfNoTreasures(){
@@ -81,9 +87,13 @@ public class Player {
         
     }
     
-    /*
+    
     protected float computeGoldCoinsValue(ArrayList<Treasure> t){
-        
+        float value=0;
+        for(int i=0;i<t.size();i++){
+            value=value+t.get(i).getGoldCoins();
+        }
+        return value;
     }
     
     public void applyPrize(Prize p){
@@ -103,7 +113,22 @@ public class Player {
     }
     
     public boolean canMakeTreasureVisible(Treasure t){
-        
+        boolean valido=true;
+        int nOneHand=0;
+        for(int i=0;i<visibleTreasures.size() && valido;++i){
+            if((visibleTreasures.get(i).getType()==t.getType())) {
+               if(!(t.getType()==TreasureKind.ONEHAND && nOneHand<2))
+                    valido=false;
+               else
+                   if(t.getType()==TreasureKind.ONEHAND)
+                       nOneHand++;
+               
+            }else{
+                if((t.getType()==TreasureKind.ONEHAND && visibleTreasures.get(i).getType()==TreasureKind.BOTHHANDS)||(t.getType()==TreasureKind.BOTHHANDS && visibleTreasures.get(i).getType()==TreasureKind.ONEHAND))
+                    valido=false;
+                }
+        } 
+        return valido;
     }
     
     public void discardVisibleTReasure(Treasure t){
@@ -116,7 +141,7 @@ public class Player {
     
     public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
         
-    }*/
+    }
     
     public int getCombatLevel(){//hay dos bucles for para recorrer lo mismo, lo puedes hacer solo en uno
         int combatLevel = level;

@@ -185,15 +185,32 @@ public class CardDealer {
     public static CardDealer getInstance(){
         return INSTANCE;
     }
-    /*
+    
     public Treasure nextTreasure(){
-        
+               
+        if(unusedTreasures.isEmpty()){
+            ArrayList<Treasure> aux=  unusedTreasures;
+            unusedTreasures=usedTreasures;
+            usedTreasures=aux;
+            shuffleTreasures();
+        }
+        Treasure t=unusedTreasures.get(0);
+        unusedTreasures.remove(0);
+        return t;
     }
     
     public Monster nextMonster(){
-        
+         if(unusedMonsters.isEmpty()){
+            ArrayList<Monster> aux=  unusedMonsters;
+            unusedMonsters=usedMonsters;
+            usedMonsters=aux;
+            shuffleMonsters();
+        }
+        Monster t=unusedMonsters.get(0);
+        unusedMonsters.remove(0);
+        return t;
     }
-    */
+    
     public void giveTreasureBack(Treasure t){
         usedTreasures.add(t);
     }

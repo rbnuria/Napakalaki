@@ -117,19 +117,31 @@ public class BadConsequence {
         return specificVisibleTreasures;
     }
     
-    /*
+    
     public void substractVisibleTreasure(Treasure t){
+        TreasureKind tipo=t.getType();
+        for(int i=0; i< specificVisibleTreasures.size();i++){
+            if(specificVisibleTreasures.get(i)==tipo){
+                specificVisibleTreasures.remove(i);
+            }
+        }
+        //AQUI Y EN EL METODO DE ABAJO, SI NO HA ENCONTRADO NADA, MIGUEL HACE QUE TE DESCARTES DE UNO CUALQUIERA, YO NO LO HE PUESTO PORQUE EN LA PRACTICA DE PRIMERAS NO PONE NADA DE ESO, PERO HABRIA QUE MIRARLO
         
     }
     
     public void substractHiddenTreasure(Treasure t){
-        
+        TreasureKind tipo=t.getType();
+        for(int i=0; i< specificHiddenTreasures.size();i++){
+            if(specificHiddenTreasures.get(i)==tipo){
+                specificHiddenTreasures.remove(i);
+            }
+        }
     }
     
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
         
     }
-    */
+    
     
     
     public String ArrayToString(ArrayList<TreasureKind> t){
