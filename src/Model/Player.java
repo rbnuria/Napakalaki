@@ -99,7 +99,7 @@ public class Player {
     public void applyPrize(Prize p){
         
     }
-    
+    /*
     public CombatResult combat(Monster m){
         
     }
@@ -111,7 +111,7 @@ public class Player {
     public boolean makeTreasureVisible(Treasure t){
         
     }
-    
+    */
     public boolean canMakeTreasureVisible(Treasure t){
         boolean valido=true;
         int nOneHand=0;
@@ -138,11 +138,11 @@ public class Player {
     public void discardHiddenTreasure(Treasure t){
         
     }
-    
+    /*
     public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
         
     }
-    
+    */
     public int getCombatLevel(){//hay dos bucles for para recorrer lo mismo, lo puedes hacer solo en uno
         int combatLevel = level;
         boolean collar = false; 
