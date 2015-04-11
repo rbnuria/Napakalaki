@@ -93,7 +93,11 @@ public class Player {
         for(int i=0;i<t.size();i++){
             value=value+t.get(i).getGoldCoins();
         }
-        return value;
+        
+        //Tiens que dividirlo entre cuanto vale un nivel (1000)
+        //return value;
+        
+        return value/1000;
     }
     
     public void applyPrize(Prize p){

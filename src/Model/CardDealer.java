@@ -187,7 +187,7 @@ public class CardDealer {
     }
     
     public Treasure nextTreasure(){
-               
+        //Para que haces esto? Si es vacio directamente pon el valer de las used en unused y used como vacio no?
         if(unusedTreasures.isEmpty()){
             ArrayList<Treasure> aux=  unusedTreasures;
             unusedTreasures=usedTreasures;
@@ -200,6 +200,7 @@ public class CardDealer {
     }
     
     public Monster nextMonster(){
+        //Igual que para las cartas
          if(unusedMonsters.isEmpty()){
             ArrayList<Monster> aux=  unusedMonsters;
             unusedMonsters=usedMonsters;

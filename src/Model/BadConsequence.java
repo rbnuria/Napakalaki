@@ -120,20 +120,29 @@ public class BadConsequence {
     
     public void substractVisibleTreasure(Treasure t){
         TreasureKind tipo=t.getType();
-        for(int i=0; i< specificVisibleTreasures.size();i++){
+        Boolean encontrado = false;
+        
+        for(int i=0; i< specificVisibleTreasures.size() && !encontrado;i++){
             if(specificVisibleTreasures.get(i)==tipo){
                 specificVisibleTreasures.remove(i);
+                //Esta mal porque si tienes muchos tesoros del mismo tipo te quitas todos (podrias tener dos manos visibles)
+                //Te lo arreglo yo con un bool pero es para q lo sepas
+                encontrado = true;
             }
         }
-        //AQUI Y EN EL METODO DE ABAJO, SI NO HA ENCONTRADO NADA, MIGUEL HACE QUE TE DESCARTES DE UNO CUALQUIERA, YO NO LO HE PUESTO PORQUE EN LA PRACTICA DE PRIMERAS NO PONE NADA DE ESO, PERO HABRIA QUE MIRARLO
+        //AQUI Y EN EL METODO DE ABAJO, SI NO HA ENCONTRADO NADA, MIGUEL HACE QUE TE DESCARTES DE UNO CUALQUIERA, 
+        //YO NO LO HE PUESTO PORQUE EN LA PRACTICA DE PRIMERAS NO PONE NADA DE ESO, PERO HABRIA QUE MIRARLO
         
     }
     
     public void substractHiddenTreasure(Treasure t){
+        //Igual que el anterior, te lo arreglo
+        Boolean encontrado = false;
         TreasureKind tipo=t.getType();
-        for(int i=0; i< specificHiddenTreasures.size();i++){
+        for(int i=0; i< specificHiddenTreasures.size() && !encontrado;i++){
             if(specificHiddenTreasures.get(i)==tipo){
                 specificHiddenTreasures.remove(i);
+                encontrado = true;
             }
         }
     }
