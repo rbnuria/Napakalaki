@@ -166,7 +166,7 @@ public class Player {
     }
     
     public boolean validState(){
-        if(this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size() <= MAXHIDDENTREASURES)
+        if(this.pendingBadConsequence!= null &&this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size() <= MAXHIDDENTREASURES)
             return true;
         else
             return false;
