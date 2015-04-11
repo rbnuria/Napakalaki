@@ -137,12 +137,12 @@ public class BadConsequence {
             }
         }
     }
-    
+    /*
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
         
     }
     
-    
+    */
     
     public String ArrayToString(ArrayList<TreasureKind> t){
         String auxiliar = "";
