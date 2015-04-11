@@ -81,7 +81,7 @@ public class BadConsequence {
     
     public boolean isEmpty(){
         return (levels==-1)&&(nVisibleTreasures==-1)&&(nHiddenTreasures==-1)&&(specificVisibleTreasures.isEmpty())
-                &&(specificHiddenTreasures.isEmpty() && death == false);                    
+                &&(specificHiddenTreasures.isEmpty()) && (death == false);                    
     }
     
     public boolean kills(){
@@ -167,8 +167,5 @@ public class BadConsequence {
                 ((!(specificHiddenTreasures.isEmpty())) ? ArrayToString(this.specificHiddenTreasures) : "No quita tesoros ocultos");
                 
     }
-    
-    
-    
 }
 

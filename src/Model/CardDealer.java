@@ -26,7 +26,7 @@ public class CardDealer {
     private CardDealer(){}
     
     private void initTreasureCardDeck(){
-        
+       
         unusedTreasures.add(new Treasure("¡Sí mi amo!", 0, 4, 7, TreasureKind.HELMET));        
         unusedTreasures.add(new Treasure("Botas de investigacion", 600, 3, 4, TreasureKind.SHOE));        
         unusedTreasures.add(new Treasure("Capucha de Cthulhu", 500, 3, 5, TreasureKind.HELMET));        
