@@ -49,23 +49,13 @@ public class BadConsequence {
         this.death = death;
         
         //Valores por defecto
-        levels = -1;
-        nVisibleTreasures = -1;
-        nHiddenTreasures = -1;
+        levels = 0;
+        nVisibleTreasures = 0;
+        nHiddenTreasures = 0;
         specificHiddenTreasures = new ArrayList();
         specificVisibleTreasures = new ArrayList();
     }
-    /* Yo no creo que esto se pueda hacer ni esté bien
-    public BadConsequence(){
-        this.text = "";
-        this.death = false;        
-        //Valores por defecto
-        levels = -1;
-        nVisibleTreasures = -1;
-        nHiddenTreasures = -1;
-        specificHiddenTreasures = new ArrayList();
-        specificVisibleTreasures = new ArrayList();
-    }*/
+
     public BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible, ArrayList<TreasureKind> tHidden){
         this.text = text;
         this.levels = levels;
@@ -73,14 +63,14 @@ public class BadConsequence {
         this.specificHiddenTreasures = tHidden;
         
         //Valores por defecto
-        nVisibleTreasures = -1;
-        nHiddenTreasures = -1;
+        nVisibleTreasures = 0;
+        nHiddenTreasures = 0;
         death = false;
     }
     
     
     public boolean isEmpty(){
-        return (levels==-1)&&(nVisibleTreasures==-1)&&(nHiddenTreasures==-1)&&(specificVisibleTreasures.isEmpty())
+        return (levels==0)&&(nVisibleTreasures==0)&&(nHiddenTreasures==0)&&(specificVisibleTreasures.isEmpty())
                 &&(specificHiddenTreasures.isEmpty()) && (death == false);                    
     }
     
@@ -125,8 +115,6 @@ public class BadConsequence {
         for(int i=0; i< specificVisibleTreasures.size() && !encontrado;i++){
             if(specificVisibleTreasures.get(i)==tipo){
                 specificVisibleTreasures.remove(i);
-                //Esta mal porque si tienes muchos tesoros del mismo tipo te quitas todos (podrias tener dos manos visibles)
-                //Te lo arreglo yo con un bool pero es para q lo sepas
                 encontrado = true;
             }
         }
@@ -136,7 +124,6 @@ public class BadConsequence {
     }
     
     public void substractHiddenTreasure(Treasure t){
-        //Igual que el anterior, te lo arreglo
         Boolean encontrado = false;
         TreasureKind tipo=t.getType();
         for(int i=0; i< specificHiddenTreasures.size() && !encontrado;i++){
@@ -166,9 +153,9 @@ public class BadConsequence {
     public String toString(){
         
         return "\nTexto = " + text + 
-                "\nNiveles =" + ((levels != -1) ? Integer.toString(levels) : "No quita niveles") + 
-                "\nNumero tesoros Visibles = " + ((nVisibleTreasures != -1) ? Integer.toString(nVisibleTreasures) : "No quia tesoros visibles") +
-                "\nNumero tesoros ocultos = " +((nHiddenTreasures != -1) ? Integer.toString(nHiddenTreasures) : "No quita tesoros ocultos. ")+
+                "\nNiveles =" + ((levels != 0) ? Integer.toString(levels) : "No quita niveles") + 
+                "\nNumero tesoros Visibles = " + ((nVisibleTreasures != 0) ? Integer.toString(nVisibleTreasures) : "No quia tesoros visibles") +
+                "\nNumero tesoros ocultos = " +((nHiddenTreasures != 0) ? Integer.toString(nHiddenTreasures) : "No quita tesoros ocultos. ")+
                 "\nMuerte = " + ((death == true) ? " true" : "false" ) +
                 "\nTesoros Visibles: " + 
                 ((!(specificVisibleTreasures.isEmpty())) ? ArrayToString(this.specificVisibleTreasures) : "No quita tesoros visibles") +

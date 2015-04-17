@@ -25,8 +25,8 @@ public class TestBadConsequence {
         
         ArrayList<BadConsequence> malRollitos = new ArrayList();
         
-        BadConsequence bc2 = new BadConsequence("Yuhu", -1,-1,-1);
-        BadConsequence bc3 = new BadConsequence("Piruli", -1,new  ArrayList(),new ArrayList());
+        BadConsequence bc2 = new BadConsequence("Yuhu", 0,0,0);
+        BadConsequence bc3 = new BadConsequence("Piruli", 0,new  ArrayList(),new ArrayList());
         BadConsequence bc4 = new BadConsequence("Yihaaa", false);
         
         malRollitos.add(bc);
