@@ -133,12 +133,57 @@ public class BadConsequence {
             }
         }
     }
-    /*
-    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
+    
+    
+    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
+        //Creamos el contenido del badConsequence nuevo
+        ArrayList <TreasureKind> tVisible = new ArrayList();
+        ArrayList <TreasureKind> tHidden = new ArrayList();
+        int nvisible = this.nVisibleTreasures;
+        int nhidden = this.nHiddenTreasures;
+        BadConsequence nuevoBc;
         
+        ArrayList <TreasureKind> copiavisible = new ArrayList(specificVisibleTreasures);
+        ArrayList <TreasureKind> copiahidden = new ArrayList(specificHiddenTreasures);
+        
+        //Si no pasamos listas especificas si no numero de tesoros, cogemos el máximo de tesoros posibles
+        //Esto es, el mínimo entre todos los tesoros que tenemos y los que quiere aplicar el mal rollo actual
+        if(copiavisible.isEmpty() && copiahidden.isEmpty()){
+            if(visible.size() <  this.nVisibleTreasures){
+                nvisible = visible.size();
+            }
+            if(hidden.size() < this.nHiddenTreasures){
+                nhidden = hidden.size();
+            }
+            
+            //Creamos badConsequence
+            nuevoBc = new BadConsequence(this.text, 0, nvisible, nhidden);
+            
+        //Por el contrario, si lo que tenemos son listas especificas de tesoros, rellenamos los vectores correspondientes
+        //a las listas de tesoros visibles y ocultos del nuevo badConsequence con los tesoros que contengamos
+        }else{
+            for(Treasure treasure : visible){
+                if(copiavisible.contains(treasure.getType())){
+                    tVisible.add(treasure.getType());
+                    visible.remove(treasure);
+                }
+            }
+            
+            for(Treasure treasure : hidden){
+                if(copiahidden.contains(treasure.getType())){
+                    tHidden.add(treasure.getType());
+                    hidden.remove(treasure);
+                }
+            }  
+            
+            nuevoBc = new BadConsequence(this.text, 0, tVisible, tHidden);
+        }
+        
+        return nuevoBc;
+
     }
     
-    */
+    
     
     public String ArrayToString(ArrayList<TreasureKind> t){
         String auxiliar = "";

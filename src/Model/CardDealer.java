@@ -206,6 +206,7 @@ public class CardDealer {
             usedMonsters=aux;
             shuffleMonsters();
         }
+         
         Monster t=unusedMonsters.get(0);
         unusedMonsters.remove(0);
         return t;
@@ -219,7 +220,9 @@ public class CardDealer {
         usedMonsters.add(m);
     }
     
-    public void initCards(){
+    public void initCards(){              
+        initTreasureCardDeck();
+        initMonsterCardDeck();
     }
 
 }

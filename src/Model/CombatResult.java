@@ -10,5 +10,5 @@ package Model;
  * @author nuria
  */
 public enum CombatResult {
-    WINANDWINGAME, WIN, LOSE, LOSEANDSCAPE, LOSANDDIE
+    WINANDWINGAME, WIN, LOSE, LOSEANDESCAPE, LOSEANDDIE
 }

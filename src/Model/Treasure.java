@@ -9,7 +9,7 @@ package Model;
  *
  * @author nuria
  */
-class Treasure {
+public class Treasure {
     private String name;
     private int goldCoins;
     private int minBonus;
