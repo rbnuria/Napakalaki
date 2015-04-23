@@ -37,6 +37,20 @@ public class Player {
         return this.name;
     }
     
+    public String toString(){
+        String tesorosVisibles = "\n\t";
+        for(Treasure t : visibleTreasures){
+            tesorosVisibles += t.toString();
+        }
+        
+        String tesorosOcultos = "\n\t";
+        for(Treasure t : hiddenTreasures){
+            tesorosOcultos +=  t.toString();
+        }
+        return "Nombre: " + getName() + "\n\tNivel: " + level + "\n\tTesoros visibles: " + tesorosVisibles +
+                "\n\tTesoros invisibles: " + tesorosOcultos;
+    }
+    
     private void bringToLive(){
         this.dead = false;
     }

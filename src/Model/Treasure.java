@@ -44,4 +44,18 @@ public class Treasure {
         return type;
     }
     
+    public String toString(){
+        String nombre = name;
+        String num_monedas = Integer.toString(goldCoins);
+        String maxiBonus = Integer.toString(maxBonus);
+        String miniBonus = Integer.toString(minBonus);
+        String tipo = type.toString();
+        
+        return "\t\t" + "Tesoro : " + name + "\n\tValor en monedas de oro : " + num_monedas + 
+                "\n\tNiveles que suma sin collar : " + miniBonus + "\n\tNiveles que suma con collar : " + maxiBonus +
+                "\n\tTipo de tesoro : " + tipo + "\n";
+        
+        
+    }
+    
 }

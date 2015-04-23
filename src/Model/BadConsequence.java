@@ -198,13 +198,13 @@ public class BadConsequence {
     public String toString(){
         
         return "\nTexto = " + text + 
-                "\nNiveles =" + ((levels != 0) ? Integer.toString(levels) : "No quita niveles") + 
-                "\nNumero tesoros Visibles = " + ((nVisibleTreasures != 0) ? Integer.toString(nVisibleTreasures) : "No quia tesoros visibles") +
-                "\nNumero tesoros ocultos = " +((nHiddenTreasures != 0) ? Integer.toString(nHiddenTreasures) : "No quita tesoros ocultos. ")+
-                "\nMuerte = " + ((death == true) ? " true" : "false" ) +
-                "\nTesoros Visibles: " + 
+                "\n\tNiveles =" + ((levels != 0) ? Integer.toString(levels) : "No quita niveles") + 
+                "\n\tNumero tesoros Visibles = " + ((nVisibleTreasures != 0) ? Integer.toString(nVisibleTreasures) : "No quia tesoros visibles") +
+                "\n\tNumero tesoros ocultos = " +((nHiddenTreasures != 0) ? Integer.toString(nHiddenTreasures) : "No quita tesoros ocultos. ")+
+                "\n\tMuerte = " + ((death == true) ? " true" : "false" ) +
+                "\n\tTesoros Visibles: " + 
                 ((!(specificVisibleTreasures.isEmpty())) ? ArrayToString(this.specificVisibleTreasures) : "No quita tesoros visibles") +
-                "\nTesoros Ocultos: " + 
+                "\n\tTesoros Ocultos: " + 
                 ((!(specificHiddenTreasures.isEmpty())) ? ArrayToString(this.specificHiddenTreasures) : "No quita tesoros ocultos");
                 
     }
