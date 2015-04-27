@@ -38,16 +38,17 @@ public class Player {
     }
     
     public String toString(){
-        String tesorosVisibles = "\n\t";
+        String tesorosVisibles = "\n";
         for(Treasure t : visibleTreasures){
-            tesorosVisibles += t.toString();
+            tesorosVisibles += "\t" + t.toString() + "\n";
         }
         
-        String tesorosOcultos = "\n\t";
+        String tesorosOcultos = "\n";
         for(Treasure t : hiddenTreasures){
-            tesorosOcultos +=  t.toString();
+            tesorosOcultos +=  "\t" +t.toString() + "\n";
         }
-        return "Nombre: " + getName() + "\n\tNivel: " + level + "\n\tTesoros visibles: " + tesorosVisibles +
+        
+        return "Nombre: " + getName() + "\n\tNivel: " + level +"\n\tNivel de combate:" + Integer.toString(getCombatLevel()) + "\n\tTesoros visibles: " + tesorosVisibles +
                 "\n\tTesoros invisibles: " + tesorosOcultos;
     }
     
@@ -123,8 +124,7 @@ public class Player {
             value=value+t.get(i).getGoldCoins();
         }
         
-        
-        return value/1000;
+        return value;
     }
     
     public void applyPrize(Prize p){
@@ -193,12 +193,15 @@ public class Player {
         BadConsequence pendingBad = bad.adjustToFitTreasureLists(visibleTreasures,hiddenTreasures);
         
         setPendingBadConsequence(pendingBad);
+        
     }
     
     //Antes era boolea
     public void makeTreasureVisible(Treasure t){
-        visibleTreasures.add(t);
-        discardHiddenTreasure(t);
+        if(canMakeTreasureVisible(t)){
+            visibleTreasures.add(t);
+            discardHiddenTreasure(t);
+        }
     }
     
     
@@ -206,13 +209,16 @@ public class Player {
         boolean valido=true;
         int nOneHand=0;
         for(int i=0;i<visibleTreasures.size() && valido;++i){
-            if((visibleTreasures.get(i).getType()==t.getType())) {
-               if(!(t.getType()==TreasureKind.ONEHAND && nOneHand<2))
+            if((visibleTreasures.get(i).getType()==t.getType())) { 
+                if(visibleTreasures.get(i).getType()==TreasureKind.ONEHAND){
+                   if(nOneHand==2)
+                        valido=false;
+                   else{
+                        nOneHand++;
+                        
+                    }
+                }else
                     valido=false;
-               else
-                   if(t.getType()==TreasureKind.ONEHAND)
-                       nOneHand++;
-               
             }else{
                 if((t.getType()==TreasureKind.ONEHAND && visibleTreasures.get(i).getType()==TreasureKind.BOTHHANDS)||(t.getType()==TreasureKind.BOTHHANDS && visibleTreasures.get(i).getType()==TreasureKind.ONEHAND))
                     valido=false;
@@ -222,8 +228,10 @@ public class Player {
     }
     
     public void discardVisibleTreasure(Treasure treasure){
-        visibleTreasures.remove(treasure);
         
+        visibleTreasures.remove(treasure);
+        if(visibleTreasures.isEmpty())
+            pendingBadConsequence=null;
         //Ajustamos el pendingBadConsequence
         if( (pendingBadConsequence!=null) && (!pendingBadConsequence.isEmpty()) ){
             pendingBadConsequence.substractVisibleTreasure(treasure);
@@ -251,6 +259,8 @@ public class Player {
     public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
         float levels = computeGoldCoinsValue(visible);
         levels += computeGoldCoinsValue(hidden);
+        
+        levels = levels/1000;
         
         boolean canI = canIBuyLevels((int)levels);
         
@@ -288,7 +298,7 @@ public class Player {
     }
     
     public boolean validState(){
-        if(this.pendingBadConsequence!= null &&this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size() <= MAXHIDDENTREASURES)
+        if((this.pendingBadConsequence == null || this.pendingBadConsequence.isEmpty()) && this.hiddenTreasures.size() <= MAXHIDDENTREASURES)
             return true;
         else
             return false;

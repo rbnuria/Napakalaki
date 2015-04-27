@@ -172,6 +172,8 @@ public class CardDealer {
                 new ArrayList(Arrays.asList(TreasureKind.ONEHAND,TreasureKind.BOTHHANDS)), new ArrayList());
         prize = new Prize(1,1);
         unusedMonsters.add(new Monster("Bicéfalo", 20, badConsequence, prize));
+        
+        
     }
     
     private void shuffleTreasures(){
@@ -194,6 +196,7 @@ public class CardDealer {
             shuffleTreasures();
         }
         Treasure t=unusedTreasures.get(0);
+        
         unusedTreasures.remove(0);
         return t;
     }
@@ -208,6 +211,7 @@ public class CardDealer {
         }
          
         Monster t=unusedMonsters.get(0);
+        
         unusedMonsters.remove(0);
         return t;
     }
@@ -222,7 +226,9 @@ public class CardDealer {
     
     public void initCards(){              
         initTreasureCardDeck();
+        shuffleTreasures();
         initMonsterCardDeck();
+        shuffleMonsters();
     }
 
 }

@@ -71,7 +71,7 @@ public class BadConsequence {
     
     public boolean isEmpty(){
         return (levels==0)&&(nVisibleTreasures==0)&&(nHiddenTreasures==0)&&(specificVisibleTreasures.isEmpty())
-                &&(specificHiddenTreasures.isEmpty()) && (death == false);                    
+                &&(specificHiddenTreasures.isEmpty());                    
     }
     
     public boolean kills(){
@@ -118,8 +118,6 @@ public class BadConsequence {
                 encontrado = true;
             }
         }
-        //AQUI Y EN EL METODO DE ABAJO, SI NO HA ENCONTRADO NADA, MIGUEL HACE QUE TE DESCARTES DE UNO CUALQUIERA, 
-        //YO NO LO HE PUESTO PORQUE EN LA PRACTICA DE PRIMERAS NO PONE NADA DE ESO, PERO HABRIA QUE MIRARLO
         
     }
     
@@ -143,12 +141,13 @@ public class BadConsequence {
         int nhidden = this.nHiddenTreasures;
         BadConsequence nuevoBc;
         
-        ArrayList <TreasureKind> copiavisible = new ArrayList(specificVisibleTreasures);
-        ArrayList <TreasureKind> copiahidden = new ArrayList(specificHiddenTreasures);
+        ArrayList<Treasure> copiavisible = new ArrayList(visible);
+        ArrayList<Treasure> copiahidden = new ArrayList(hidden);
+        
         
         //Si no pasamos listas especificas si no numero de tesoros, cogemos el máximo de tesoros posibles
         //Esto es, el mínimo entre todos los tesoros que tenemos y los que quiere aplicar el mal rollo actual
-        if(copiavisible.isEmpty() && copiahidden.isEmpty()){
+        if(specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty()){
             if(visible.size() <  this.nVisibleTreasures){
                 nvisible = visible.size();
             }
@@ -162,17 +161,22 @@ public class BadConsequence {
         //Por el contrario, si lo que tenemos son listas especificas de tesoros, rellenamos los vectores correspondientes
         //a las listas de tesoros visibles y ocultos del nuevo badConsequence con los tesoros que contengamos
         }else{
-            for(Treasure treasure : visible){
-                if(copiavisible.contains(treasure.getType())){
-                    tVisible.add(treasure.getType());
-                    visible.remove(treasure);
+            for(TreasureKind treasure : specificVisibleTreasures){
+                for(Treasure t : copiavisible){
+                    if(t.getType() == treasure){
+                        tVisible.add(treasure);
+                        copiavisible.remove(t);
+                    }
                 }
+                
             }
             
-            for(Treasure treasure : hidden){
-                if(copiahidden.contains(treasure.getType())){
-                    tHidden.add(treasure.getType());
-                    hidden.remove(treasure);
+            for(TreasureKind treasure : specificHiddenTreasures){
+                for(Treasure t : copiahidden){
+                    if(t.getType() == treasure){
+                        tHidden.add(treasure);
+                        copiahidden.remove(t);
+                    }
                 }
             }  
             

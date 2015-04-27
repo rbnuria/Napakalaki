@@ -62,8 +62,6 @@ public class Napakalaki {
         CardDealer.getInstance().giveMonsterBack(currentMonster);
         
         return resultado;   
-        
-        //Aqui miguel hace cosas raras
     }
     
    
