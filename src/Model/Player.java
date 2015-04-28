@@ -38,18 +38,7 @@ public class Player {
     }
     
     public String toString(){
-        String tesorosVisibles = "\n";
-        for(Treasure t : visibleTreasures){
-            tesorosVisibles += "\t" + t.toString() + "\n";
-        }
-        
-        String tesorosOcultos = "\n";
-        for(Treasure t : hiddenTreasures){
-            tesorosOcultos +=  "\t" +t.toString() + "\n";
-        }
-        
-        return "Nombre: " + getName() + "\n\tNivel: " + level +"\n\tNivel de combate:" + Integer.toString(getCombatLevel()) + "\n\tTesoros visibles: " + tesorosVisibles +
-                "\n\tTesoros invisibles: " + tesorosOcultos;
+        return "Nombre: " + getName() + "\n\tNivel: " + level +"\n\tNivel de combate:" + Integer.toString(getCombatLevel()) + "\n";
     }
     
     private void bringToLive(){
@@ -89,6 +78,7 @@ public class Player {
         
         hiddenTreasures.clear();
         
+        dieIfNoTreasures();
         
     }
     
@@ -196,7 +186,6 @@ public class Player {
         
     }
     
-    //Antes era boolea
     public void makeTreasureVisible(Treasure t){
         if(canMakeTreasureVisible(t)){
             visibleTreasures.add(t);
@@ -215,6 +204,9 @@ public class Player {
                         valido=false;
                    else{
                         nOneHand++;
+                        if(nOneHand == 2){
+                            return false;
+                        }
                         
                     }
                 }else
@@ -227,31 +219,23 @@ public class Player {
         return valido;
     }
     
-    public void discardVisibleTreasure(Treasure treasure){
-        
+    public void discardVisibleTreasure(Treasure treasure){     
         visibleTreasures.remove(treasure);
-        if(visibleTreasures.isEmpty())
-            pendingBadConsequence=null;
         //Ajustamos el pendingBadConsequence
         if( (pendingBadConsequence!=null) && (!pendingBadConsequence.isEmpty()) ){
             pendingBadConsequence.substractVisibleTreasure(treasure);
-        }
-        
-        CardDealer.getInstance().giveTreasureBack(treasure);
-        
+        } 
+        CardDealer.getInstance().giveTreasureBack(treasure);   
         dieIfNoTreasures();
     }
     
     public void discardHiddenTreasure(Treasure treasure){
-        hiddenTreasures.remove(treasure);
-        
+        hiddenTreasures.remove(treasure);   
         //Ajustamos el pendingBadConsequence
         if( (pendingBadConsequence!=null) && (!pendingBadConsequence.isEmpty()) ){
             pendingBadConsequence.substractHiddenTreasure(treasure);
-        }
-        
-        CardDealer.getInstance().giveTreasureBack(treasure);
-        
+        }  
+        CardDealer.getInstance().giveTreasureBack(treasure);  
         dieIfNoTreasures();
     }
     
@@ -279,7 +263,7 @@ public class Player {
         return canI;
     }
     
-    public int getCombatLevel(){//hay dos bucles for para recorrer lo mismo, lo puedes hacer solo en uno
+    public int getCombatLevel(){
         int combatLevel = level;
         boolean collar = false; 
         for(Treasure it : visibleTreasures){

@@ -119,6 +119,10 @@ public class BadConsequence {
             }
         }
         
+        if(!encontrado && nVisibleTreasures != 0){
+            nVisibleTreasures--;
+        }
+        
     }
     
     public void substractHiddenTreasure(Treasure t){
@@ -129,6 +133,10 @@ public class BadConsequence {
                 specificHiddenTreasures.remove(i);
                 encontrado = true;
             }
+        }
+        
+        if(!encontrado && nHiddenTreasures != 0){
+            nHiddenTreasures--;
         }
     }
     
@@ -201,7 +209,7 @@ public class BadConsequence {
 
     public String toString(){
         
-        return "\nTexto = " + text + 
+        return "\n\tTexto = " + text + 
                 "\n\tNiveles =" + ((levels != 0) ? Integer.toString(levels) : "No quita niveles") + 
                 "\n\tNumero tesoros Visibles = " + ((nVisibleTreasures != 0) ? Integer.toString(nVisibleTreasures) : "No quia tesoros visibles") +
                 "\n\tNumero tesoros ocultos = " +((nHiddenTreasures != 0) ? Integer.toString(nHiddenTreasures) : "No quita tesoros ocultos. ")+

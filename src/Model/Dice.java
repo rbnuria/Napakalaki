@@ -6,6 +6,7 @@
 package Model;
 
 import static java.sql.Types.NULL;
+import java.util.Random;
 
 /**
  *
@@ -21,11 +22,13 @@ public class Dice {
         return instance;
     }
     
-    
+
     public int nextNumber(){
         int  numero = (int) (Math.random() * 6) + 1;
         return numero;
     }
+    
+    
     
     
 }
