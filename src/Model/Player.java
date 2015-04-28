@@ -19,9 +19,10 @@ public class Player {
     private final int MAXHIDDENTREASURES = 4;
     
     //Referencias
-    private ArrayList<Treasure> hiddenTreasures;
-    private ArrayList<Treasure> visibleTreasures;
-    private BadConsequence pendingBadConsequence;
+    //He inicializado esto despues de probar
+    private ArrayList<Treasure> hiddenTreasures = new ArrayList();
+    private ArrayList<Treasure> visibleTreasures = new ArrayList();
+    private BadConsequence pendingBadConsequence = null;
     
     public Player(String nombre){
         this.dead = true;
