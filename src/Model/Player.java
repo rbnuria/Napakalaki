@@ -18,10 +18,8 @@ public class Player {
     private int level;
     private final int MAXHIDDENTREASURES = 4;
     
-    //Referencias
-    //He inicializado esto despues de probar
-    private ArrayList<Treasure> hiddenTreasures = new ArrayList();
-    private ArrayList<Treasure> visibleTreasures = new ArrayList();
+    private ArrayList<Treasure> hiddenTreasures;
+    private ArrayList<Treasure> visibleTreasures;
     private BadConsequence pendingBadConsequence = null;
     
     public Player(String nombre){
@@ -32,6 +30,35 @@ public class Player {
         level = 1;
         hiddenTreasures = new ArrayList();
         visibleTreasures = new ArrayList();
+    }
+    
+    public Player(Player jugador){
+        this.dead = jugador.dead;
+        this.name = jugador.name;
+        this.level = jugador.level;
+        
+        hiddenTreasures = new ArrayList();
+        for(Treasure tesoro:jugador.hiddenTreasures){
+            this.hiddenTreasures.add(tesoro);
+        }
+        
+        visibleTreasures = new ArrayList();
+        for(Treasure tesoro:jugador.visibleTreasures){
+            this.visibleTreasures.add(tesoro);
+        }
+    }
+    
+    protected int getOponentLevel(Monster monster){
+        return monster.getBasicValue();
+    }
+    
+    protected boolean shouldConvert(){
+        int number = Dice.getInstance().nextNumber();
+        if(number == 6){
+            return true;
+        }else{
+            return false;
+        }    
     }
     
     public String getName(){
@@ -136,8 +163,8 @@ public class Player {
     
     
     public CombatResult combat(Monster m){
-        int mylevel = getCombatLevel();
-        int levelmonster = m.getCombatLevel();
+        int mylevel = this.getCombatLevel();
+        int levelmonster = this.getOponentLevel(m);
         Prize prize;
         CombatResult combatResult;
         
@@ -162,7 +189,17 @@ public class Player {
                     die();
                     combatResult = CombatResult.LOSEANDDIE;
                 }else{
+                    //Aunque se convierta a sectario aplicamos badConsequence, no?
                     applyBadConsequence(bad);
+                    //Vemos si tenemos que convertirnos a sectarios
+                    boolean sectario = this.shouldConvert();
+                    if(sectario){
+                        combatResult = CombatResult.LOSEANDCONVERT;
+                    }else{
+                        combatResult = CombatResult.LOSE;
+                    }
+                        
+
                     combatResult = CombatResult.LOSE;
                 }
             }else{
@@ -330,6 +367,7 @@ public class Player {
     public ArrayList<Treasure> getVisibleTreasures(){
         return visibleTreasures;
     }
+    
     
 
 }

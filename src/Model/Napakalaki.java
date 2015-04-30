@@ -61,7 +61,16 @@ public class Napakalaki {
         CombatResult resultado = currentPlayer.combat(currentMonster);
         CardDealer.getInstance().giveMonsterBack(currentMonster);
         
-        return resultado;   
+        if(resultado == CombatResult.LOSEANDCONVERT){
+            Cultist cultist = CardDealer.getInstance().nextCultist();
+            CultistPlayer cultistPlayer = new CultistPlayer(currentPlayer, cultist);
+            
+            //Sustituimos el jugador actual por el sectarios
+            players.set(currentPlayerIndex, cultistPlayer);
+            currentPlayer = cultistPlayer;         
+        }
+        
+        return resultado;     
     }
     
    

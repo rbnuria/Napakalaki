@@ -9,7 +9,7 @@ package Model;
  *
  * @author nuria
  */
-public class Treasure {
+public class Treasure implements Card{
     private String name;
     private int goldCoins;
     private int minBonus;
@@ -57,5 +57,14 @@ public class Treasure {
         
         
     }
+    
+    public int getBasicValue(){
+        return getMinBonus();
+    }
+    
+    public int getSpecialValue(){
+        return getMaxBonus();
+    }
+    
     
 }
