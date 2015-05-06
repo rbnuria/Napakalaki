@@ -172,7 +172,7 @@ public class Player {
             prize = m.getPrize();
             applyPrize(prize);
             
-            if(level > 10){
+            if(level >= 10){
                 combatResult = CombatResult.WINANDWINGAME;
             }else{
                 combatResult = CombatResult.WIN;
