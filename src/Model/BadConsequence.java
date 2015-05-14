@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author nuria
  */
-public class BadConsequence {
+public abstract class BadConsequence {
     //Atributos de visibilidad privada
     
     //Texto que dice un mal rollo
@@ -30,45 +30,7 @@ public class BadConsequence {
     //Tesoros especificos visibles que pierdes
     private ArrayList<TreasureKind> specificVisibleTreasures;
      
-
-    //Constructores
-    public BadConsequence(String text, int levels, int nVisible, int nHidden){
-        this.text = text;
-        this.levels = levels;
-        nVisibleTreasures = nVisible;
-        nHiddenTreasures = nHidden;
-        
-        //Valores por defecto
-        death = false;
-        specificHiddenTreasures = new ArrayList();
-        specificVisibleTreasures = new ArrayList();
-    }
-    
-    public BadConsequence(String text, boolean death){
-        this.text = text;
-        this.death = death;
-        
-        //Valores por defecto
-        levels = 0;
-        nVisibleTreasures = 0;
-        nHiddenTreasures = 0;
-        specificHiddenTreasures = new ArrayList();
-        specificVisibleTreasures = new ArrayList();
-    }
-
-    public BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible, ArrayList<TreasureKind> tHidden){
-        this.text = text;
-        this.levels = levels;
-        this.specificVisibleTreasures = tVisible;
-        this.specificHiddenTreasures = tHidden;
-        
-        //Valores por defecto
-        nVisibleTreasures = 0;
-        nHiddenTreasures = 0;
-        death = false;
-    }
-    
-    
+     
     public boolean isEmpty(){
         return (levels==0)&&(nVisibleTreasures==0)&&(nHiddenTreasures==0)&&(specificVisibleTreasures.isEmpty())
                 &&(specificHiddenTreasures.isEmpty());                    
@@ -164,7 +126,7 @@ public class BadConsequence {
             }
             
             //Creamos badConsequence
-            nuevoBc = new BadConsequence(this.text, 0, nvisible, nhidden);
+            nuevoBc = new BadConsequenceNumbers(this.text, 0, nvisible, nhidden);
             
         //Por el contrario, si lo que tenemos son listas especificas de tesoros, rellenamos los vectores correspondientes
         //a las listas de tesoros visibles y ocultos del nuevo badConsequence con los tesoros que contengamos
@@ -173,7 +135,7 @@ public class BadConsequence {
                 for(Treasure t : copiavisible){
                     if(t.getType() == treasure){
                         tVisible.add(treasure);
-                        copiavisible.remove(t);
+                        //copiavisible.remove(t);
                     }
                 }
                 
@@ -183,12 +145,12 @@ public class BadConsequence {
                 for(Treasure t : copiahidden){
                     if(t.getType() == treasure){
                         tHidden.add(treasure);
-                        copiahidden.remove(t);
+                        //copiahidden.remove(t);
                     }
                 }
             }  
             
-            nuevoBc = new BadConsequence(this.text, 0, tVisible, tHidden);
+            nuevoBc = new BadConsequenceSpecific(this.text, 0, tVisible, tHidden);
         }
         
         return nuevoBc;
