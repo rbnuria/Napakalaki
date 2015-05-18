@@ -14,15 +14,23 @@ import java.util.ArrayList;
 public class BadConsequenceSpecific extends BadConsequence{
     
     public BadConsequenceSpecific(String text, int levels, ArrayList<TreasureKind> tVisible, ArrayList<TreasureKind> tHidden){
-        this.text = text;
-        this.levels = levels;
-        this.specificVisibleTreasures = tVisible;
-        this.specificHiddenTreasures = tHidden;
-        
-        //Valores por defecto
-        nVisibleTreasures = 0;
-        nHiddenTreasures = 0;
-        death = false;
+        super(text,levels,0,0,false,tVisible,tHidden);
+    }
+    
+    @Override
+   public String toString(){
+       
+       
+        return super.toString()+ "\n\tTexto = " + this.getText() + 
+                "\n\tNiveles =" + ((this.getLevels() != 0) ? Integer.toString(this.getLevels()) : "No quita niveles") + 
+                "\n\tNumero tesoros Visibles = " + ((this.getnVisibleTreasures() != 0) ? Integer.toString(this.getnVisibleTreasures()) : "No quia tesoros visibles") +
+                "\n\tNumero tesoros ocultos = " +((this.getnHiddenTreasures() != 0) ? Integer.toString(this.getnHiddenTreasures()) : "No quita tesoros ocultos. ")+
+                "\n\tMuerte = " + ((this.getDeath() == true) ? " true" : "false" ) +
+                "\n\tTesoros Visibles: " + 
+                ((!(this.getSpecificVisibleTreasures().isEmpty())) ? ArrayToString(this.getSpecificVisibleTreasures()) : "No quita tesoros visibles") +
+                "\n\tTesoros Ocultos: " + 
+                ((!(this.getSpecificHiddenTreasures().isEmpty())) ? ArrayToString(this.getSpecificHiddenTreasures()) : "No quita tesoros ocultos");
+               
     }
     
 }
