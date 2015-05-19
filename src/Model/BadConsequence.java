@@ -5,7 +5,6 @@
  */
 package Model;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 /**
@@ -111,62 +110,7 @@ public abstract class BadConsequence {
     }
     
     
-    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
-        //Creamos el contenido del badConsequence nuevo
-        ArrayList <TreasureKind> tVisible = new ArrayList();
-        ArrayList <TreasureKind> tHidden = new ArrayList();
-        int nvisible = this.nVisibleTreasures;
-        int nhidden = this.nHiddenTreasures;
-        
-        
-        ArrayList<Treasure> copiavisible = new ArrayList(visible);
-        ArrayList<Treasure> copiahidden = new ArrayList(hidden);
-        
-        
-        //Si no pasamos listas especificas si no numero de tesoros, cogemos el máximo de tesoros posibles
-        //Esto es, el mínimo entre todos los tesoros que tenemos y los que quiere aplicar el mal rollo actual
-        if(specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty()){
-            if(visible.size() <  this.nVisibleTreasures){
-                nvisible = visible.size();
-            }
-            if(hidden.size() < this.nHiddenTreasures){
-                nhidden = hidden.size();
-            }
-            
-            //Creamos badConsequence
-            BadConsequenceNumbers nuevoBc;
-            nuevoBc = new BadConsequenceNumbers(this.text, 0, nvisible, nhidden);
-            return nuevoBc;
-        //Por el contrario, si lo que tenemos son listas especificas de tesoros, rellenamos los vectores correspondientes
-        //a las listas de tesoros visibles y ocultos del nuevo badConsequence con los tesoros que contengamos
-        }else{
-            for(TreasureKind treasure : specificVisibleTreasures){
-                for(Treasure t : copiavisible){
-                    if(t.getType() == treasure){
-                        tVisible.add(treasure);
-                        //copiavisible.remove(t);
-                    }
-                }
-                
-            }
-            
-            for(TreasureKind treasure : specificHiddenTreasures){
-                for(Treasure t : copiahidden){
-                    if(t.getType() == treasure){
-                        tHidden.add(treasure);
-                        //copiahidden.remove(t);
-                    }
-                }
-            }  
-            BadConsequenceSpecific nuevoBc;
-            nuevoBc = new BadConsequenceSpecific(this.text, 0, tVisible, tHidden);
-            return nuevoBc;
-        }
-        
-        
-
-    }
-    
+    public abstract BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> visible, ArrayList<Treasure> hidden);
     
     
     public String ArrayToString(ArrayList<TreasureKind> t){
@@ -181,16 +125,7 @@ public abstract class BadConsequence {
 
     public String toString(){
         return "\nEsto es un mal rollo con el siguiente contenido:\n";
-       /* return "\n\tTexto = " + text + 
-                "\n\tNiveles =" + ((levels != 0) ? Integer.toString(levels) : "No quita niveles") + 
-                "\n\tNumero tesoros Visibles = " + ((nVisibleTreasures != 0) ? Integer.toString(nVisibleTreasures) : "No quia tesoros visibles") +
-                "\n\tNumero tesoros ocultos = " +((nHiddenTreasures != 0) ? Integer.toString(nHiddenTreasures) : "No quita tesoros ocultos. ")+
-                "\n\tMuerte = " + ((death == true) ? " true" : "false" ) +
-                "\n\tTesoros Visibles: " + 
-                ((!(specificVisibleTreasures.isEmpty())) ? ArrayToString(this.specificVisibleTreasures) : "No quita tesoros visibles") +
-                "\n\tTesoros Ocultos: " + 
-                ((!(specificHiddenTreasures.isEmpty())) ? ArrayToString(this.specificHiddenTreasures) : "No quita tesoros ocultos");
-         */       
+        
     }
 }
 

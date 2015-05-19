@@ -20,6 +20,12 @@ public class BadConsequenceDeath extends BadConsequence {
     }
     
     @Override
+    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
+        return this;
+    }
+    
+    
+    @Override
      public String toString(){
        
        

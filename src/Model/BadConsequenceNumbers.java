@@ -16,8 +16,36 @@ public class BadConsequenceNumbers extends BadConsequence{
     public BadConsequenceNumbers(String text, int levels, int nVisible, int nHidden){
         super(text,levels,nVisible,nHidden,false,new ArrayList(),new ArrayList());
     }
-    
-   
+    @Override
+    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
+        //Creamos el contenido del badConsequence nuevo
+       
+        int nvisible = this.getnVisibleTreasures();
+        int nhidden = this.getnHiddenTreasures();
+        
+        
+        
+        //Si no pasamos listas especificas si no numero de tesoros, cogemos el máximo de tesoros posibles
+        //Esto es, el mínimo entre todos los tesoros que tenemos y los que quiere aplicar el mal rollo actual
+        
+            if(visible.size() <  nvisible){
+                nvisible = visible.size();
+            }
+            if(hidden.size() < nhidden){
+                nhidden = hidden.size();
+            }
+            
+            //Creamos badConsequence
+            BadConsequenceNumbers nuevoBc;
+            nuevoBc = new BadConsequenceNumbers(this.getText(), 0, nvisible, nhidden);
+            return nuevoBc;
+        //Por el contrario, si lo que tenemos son listas especificas de tesoros, rellenamos los vectores correspondientes
+        //a las listas de tesoros visibles y ocultos del nuevo badConsequence con los tesoros que contengamos
+        
+        
+        
+
+    }
     @Override
    public String toString(){
        

@@ -16,7 +16,47 @@ public class BadConsequenceSpecific extends BadConsequence{
     public BadConsequenceSpecific(String text, int levels, ArrayList<TreasureKind> tVisible, ArrayList<TreasureKind> tHidden){
         super(text,levels,0,0,false,tVisible,tHidden);
     }
-    
+    @Override
+     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
+        //Creamos el contenido del badConsequence nuevo
+        ArrayList <TreasureKind> tVisible = new ArrayList();
+        ArrayList <TreasureKind> tHidden = new ArrayList();
+  
+        
+        
+        ArrayList<Treasure> copiavisible = new ArrayList(visible);
+        ArrayList<Treasure> copiahidden = new ArrayList(hidden);
+        
+        
+        //Si no pasamos listas especificas si no numero de tesoros, cogemos el máximo de tesoros posibles
+        //Esto es, el mínimo entre todos los tesoros que tenemos y los que quiere aplicar el mal rollo actual
+      
+            for(TreasureKind treasure : this.getSpecificVisibleTreasures()){
+                for(Treasure t : copiavisible){
+                    if(t.getType() == treasure){
+                        tVisible.add(treasure);
+                        //copiavisible.remove(t);
+                    }
+                }
+                
+            }
+            
+            for(TreasureKind treasure : this.getSpecificHiddenTreasures()){
+                for(Treasure t : copiahidden){
+                    if(t.getType() == treasure){
+                        tHidden.add(treasure);
+                        //copiahidden.remove(t);
+                    }
+                }
+            }  
+            BadConsequenceSpecific nuevoBc;
+            nuevoBc = new BadConsequenceSpecific(this.getText(), 0, tVisible, tHidden);
+            return nuevoBc;
+        
+        
+        
+
+    }
     @Override
    public String toString(){
        
