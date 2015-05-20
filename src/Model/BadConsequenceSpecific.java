@@ -15,6 +15,8 @@ import java.util.ArrayList;
  * @author nuria
  */
 public class BadConsequenceSpecific extends BadConsequence {
+
+    
     public BadConsequenceSpecific(String text, int levels, ArrayList<TreasureKind> tVisible,
                                   ArrayList<TreasureKind> tHidden) {
         super(text, levels, 0, 0, false, tVisible, tHidden);
@@ -28,34 +30,50 @@ public class BadConsequenceSpecific extends BadConsequence {
     @Override
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> visible, ArrayList<Treasure> hidden) {
 
-        // Creamos el contenido del badConsequence nuevo
-        ArrayList<TreasureKind> tVisible = new ArrayList();
-        ArrayList<TreasureKind> tHidden = new ArrayList();
-        ArrayList<Treasure> copiavisible = new ArrayList(visible);
-        ArrayList<Treasure> copiahidden  = new ArrayList(hidden);
-        
-        for (TreasureKind treasure : this.getSpecificVisibleTreasures()) {
-            for (Treasure t : copiavisible) {
-                if (t.getType() == treasure) {
-                    tVisible.add(treasure);
-                }
-            }
+        BadConsequence nuevoBc = new BadConsequenceSpecific(this.getText(), this.getLevels(), this.getSpecificVisibleTreasures(), this.getSpecificHiddenTreasures());
+        ArrayList<TreasureKind> tVisible = this.getSpecificVisibleTreasures();
+        ArrayList<TreasureKind> tHidden = this.getSpecificHiddenTreasures();
+        ArrayList<TreasureKind> vTypes = new ArrayList();
+        ArrayList<TreasureKind> hTypes = new ArrayList();
+                
+        for(Treasure treasure: hidden){
+            hTypes.add(treasure.getType());
         }
 
-        for (TreasureKind treasure : this.getSpecificHiddenTreasures()) {
-            for (Treasure t : copiahidden) {
-                if (t.getType() == treasure) {
-                    tHidden.add(treasure);
+        for(int i=0; i<nuevoBc.getSpecificHiddenTreasures().size(); i++){
+            boolean encontrado = false;
+            for(int j=0; j<hTypes.size() && !encontrado; j++){
+                if(nuevoBc.getSpecificHiddenTreasures().get(i) == hTypes.get(j)){
+                    hTypes.remove(hTypes.get(j));
+                        encontrado = true;
                 }
             }
+            if(!encontrado){
+                nuevoBc.getSpecificHiddenTreasures().remove(nuevoBc.getSpecificHiddenTreasures().get(i));
+                i--;
+            }
+        }               
+            
+        for(Treasure treasure: visible){
+            vTypes.add(treasure.getType());
         }
 
-        BadConsequenceSpecific nuevoBc;
-
-        nuevoBc = new BadConsequenceSpecific(this.getText(), 0, tVisible, tHidden);
-
+        for(int i=0; i<nuevoBc.getSpecificVisibleTreasures().size(); i++){
+            boolean encontrado = false;
+            for(int j=0; j<vTypes.size() && !encontrado; j++){
+                if(nuevoBc.getSpecificVisibleTreasures().get(i) == vTypes.get(j)){
+                    vTypes.remove(vTypes.get(j));
+                        encontrado = true;
+                }
+            }
+            if(!encontrado){
+                nuevoBc.getSpecificVisibleTreasures().remove(nuevoBc.getSpecificVisibleTreasures().get(i));
+                i--;
+            }
+        }
         return nuevoBc;
     }
+    
 
     @Override
     public void substractVisibleTreasure(Treasure t) {

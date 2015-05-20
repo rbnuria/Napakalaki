@@ -13,6 +13,9 @@ import java.util.ArrayList;
  */
 public class BadConsequenceDeath extends BadConsequence {
     
+    //Muerte o no
+    private boolean death;  
+    
     public BadConsequenceDeath(String text, boolean death){
         super(text,0,0,0,death,new ArrayList(),new ArrayList());     
         
@@ -22,6 +25,10 @@ public class BadConsequenceDeath extends BadConsequence {
     @Override
     public boolean isEmpty(){
         return true;
+    }
+    
+    public boolean getDeath(){
+        return death;
     }
     
     @Override

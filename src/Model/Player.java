@@ -61,6 +61,14 @@ public class Player {
         }    
     }
     
+    //Metodos auxiliares para probar cosas
+    public void setSpecificVisibleTreasures(ArrayList<Treasure> v){
+        visibleTreasures = v;
+    }
+    
+    public void setSpecificHiddenTreasures(ArrayList<Treasure> h){
+        hiddenTreasures = h;
+    }
     public String getName(){
         return this.name;
     }

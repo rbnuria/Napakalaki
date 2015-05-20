@@ -218,15 +218,20 @@ public class CardDealer {
     }
     
     public Treasure nextTreasure(){
-        if(unusedTreasures.isEmpty()){
-            ArrayList<Treasure> aux=  unusedTreasures;
-            unusedTreasures=usedTreasures;
-            usedTreasures=aux;
-            shuffleTreasures();
-        }
-        Treasure t=unusedTreasures.get(0);
+        Treasure t;
         
-        unusedTreasures.remove(0);
+        if(unusedTreasures.isEmpty()){
+            unusedTreasures = usedTreasures;
+            usedTreasures = new ArrayList<>();
+            this.shuffleTreasures();
+
+        }
+        
+            t = unusedTreasures.get(0);
+            giveTreasureBack(t);
+            unusedTreasures.remove(t);
+        
+            
         return t;
     }
     
