@@ -20,9 +20,20 @@ public class BadConsequenceDeath extends BadConsequence {
     }
     
     @Override
+    public boolean isEmpty(){
+        return true;
+    }
+    
+    @Override
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
         return this;
     }
+    
+    @Override
+    public void substractVisibleTreasure(Treasure t){}
+    
+    @Override
+    public void substractHiddenTreasure(Treasure t){}
     
     
     @Override

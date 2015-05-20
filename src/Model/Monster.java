@@ -48,10 +48,7 @@ public class Monster implements Card{
         return prize;
     }
     
-    public String toString(){
-        return "\nNombre = " + name + "\nNivel de combate = " + Integer.toString(combatLevel) +
-                "\nBuen rollo : " + prize.toString() + "\nMal rollo : " + badConsequence.toString();
-    }
+
     
     public int getBasicValue(){
         return getCombatLevel();
@@ -61,6 +58,11 @@ public class Monster implements Card{
         return getCombatLevel() + levelChangeAgainstCultistPlayer;
     }
  
+    public String toString(){
+        return "\nNombre = " + name + "\nNivel de combate contra no sectario= " + Integer.toString(combatLevel) +
+                "\nNivel de combate contra sectario= " + Integer.toString(getSpecialValue()) +
+                "\nBuen rollo : " + prize.toString() + "\nMal rollo : " + badConsequence.toString();
+    }
 
     
 }

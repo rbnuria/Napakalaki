@@ -29,7 +29,7 @@ public abstract class BadConsequence {
     //Tesoros especificos visibles que pierdes
     private ArrayList<TreasureKind> specificVisibleTreasures;
      
-    public BadConsequence(String text,int levels,int nVisibleTreasures,int nHiddenTreasures,boolean death,ArrayList<TreasureKind> specificHiddenTreasures,ArrayList<TreasureKind> specificVisibleTreasures){
+    public BadConsequence(String text,int levels,int nVisibleTreasures,int nHiddenTreasures,boolean death,ArrayList<TreasureKind> specificVisibleTreasures,ArrayList<TreasureKind> specificHiddenTreasures){
         this.text=text;
         this.levels=levels;
         this.nHiddenTreasures=nHiddenTreasures;
@@ -38,10 +38,7 @@ public abstract class BadConsequence {
         this.specificHiddenTreasures=specificHiddenTreasures;
         this.specificVisibleTreasures=specificVisibleTreasures;
     }
-    public boolean isEmpty(){
-        return (levels==0)&&(nVisibleTreasures==0)&&(nHiddenTreasures==0)&&(specificVisibleTreasures.isEmpty())
-                &&(specificHiddenTreasures.isEmpty());                    
-    }
+    public abstract boolean isEmpty();
     
     public boolean kills(){
         return death;
@@ -76,39 +73,20 @@ public abstract class BadConsequence {
         return specificVisibleTreasures;
     }
     
-    
-    public void substractVisibleTreasure(Treasure t){
-        TreasureKind tipo=t.getType();
-        Boolean encontrado = false;
-        
-        for(int i=0; i< specificVisibleTreasures.size() && !encontrado;i++){
-            if(specificVisibleTreasures.get(i)==tipo){
-                specificVisibleTreasures.remove(i);
-                encontrado = true;
-            }
-        }
-        
-        if(!encontrado && nVisibleTreasures != 0){
-            nVisibleTreasures--;
-        }
-        
+    //Metodos auxilaires para cambiar el numero de 
+    protected void setnHiddenTreasures(int n){
+        nHiddenTreasures = n;
     }
     
-    public void substractHiddenTreasure(Treasure t){
-        Boolean encontrado = false;
-        TreasureKind tipo=t.getType();
-        for(int i=0; i< specificHiddenTreasures.size() && !encontrado;i++){
-            if(specificHiddenTreasures.get(i)==tipo){
-                specificHiddenTreasures.remove(i);
-                encontrado = true;
-            }
-        }
-        
-        if(!encontrado && nHiddenTreasures != 0){
-            nHiddenTreasures--;
-        }
+    protected void setnVisibleTreasures(int n){
+        nVisibleTreasures = n;
     }
     
+    
+    //Metodos abstractos
+    public abstract void substractVisibleTreasure(Treasure t);
+    
+    public abstract void substractHiddenTreasure(Treasure t);
     
     public abstract BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> visible, ArrayList<Treasure> hidden);
     

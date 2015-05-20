@@ -50,6 +50,14 @@ public class CultistPlayer extends Player{
         }  
         return (value*2);
     }
+    
+    @Override
+    public String toString(){
+        String salida = super.toString();
+        salida += "\n\tJugador sectario";
+        
+        return salida;
+    }
             
             
           

@@ -64,10 +64,7 @@ public class Player {
     public String getName(){
         return this.name;
     }
-    
-    public String toString(){
-        return "Nombre: " + getName() + "\n\tNivel: " + level +"\n\tNivel de combate:" + Integer.toString(getCombatLevel()) + "\n";
-    }
+
     
     private void bringToLive(){
         this.dead = false;
@@ -118,6 +115,8 @@ public class Player {
                 visibleTreasures.remove(visibleTreasures.get(i));
             }
         }
+        
+
     }
     
     private void dieIfNoTreasures(){
@@ -366,6 +365,22 @@ public class Player {
     
     public ArrayList<Treasure> getVisibleTreasures(){
         return visibleTreasures;
+    }
+         
+    public String toString(){
+        int combatl = getCombatLevel();
+        String estado;
+        if(validState()){
+            estado = " valido";
+        }else{
+            estado = " no valido";
+            if(pendingBadConsequence.isEmpty() == false){
+                estado+="\n\tMal rollo pendiente: " + pendingBadConsequence.toString();
+            }
+        }
+ 
+        return "Nombre: " + getName() + "\n\tNivel: " + level +"\n\tNivel de combate:" + Integer.toString(getCombatLevel()) + 
+                "\n\tEstado" + estado + "\n";
     }
     
     

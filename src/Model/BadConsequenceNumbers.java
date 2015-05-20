@@ -16,6 +16,11 @@ public class BadConsequenceNumbers extends BadConsequence{
     public BadConsequenceNumbers(String text, int levels, int nVisible, int nHidden){
         super(text,levels,nVisible,nHidden,false,new ArrayList(),new ArrayList());
     }
+    
+    @Override
+    public boolean isEmpty(){
+        return (getLevels()==0)&&(getnVisibleTreasures()==0)&&(getnHiddenTreasures()==0);
+    }
     @Override
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
         //Creamos el contenido del badConsequence nuevo
@@ -39,15 +44,25 @@ public class BadConsequenceNumbers extends BadConsequence{
             BadConsequenceNumbers nuevoBc;
             nuevoBc = new BadConsequenceNumbers(this.getText(), 0, nvisible, nhidden);
             return nuevoBc;
-        //Por el contrario, si lo que tenemos son listas especificas de tesoros, rellenamos los vectores correspondientes
-        //a las listas de tesoros visibles y ocultos del nuevo badConsequence con los tesoros que contengamos
-        
-        
-        
-
     }
+    
     @Override
-   public String toString(){
+    public void substractVisibleTreasure(Treasure t){        
+        if(getnVisibleTreasures() != 0){
+            setnVisibleTreasures(getnVisibleTreasures() - 1 );
+        }
+    }
+
+    @Override
+    public void substractHiddenTreasure(Treasure t){        
+        if(getnHiddenTreasures() != 0){
+            setnHiddenTreasures(getnHiddenTreasures() - 1 );
+        }
+    }
+
+    
+    @Override
+    public String toString(){
        
        
         return super.toString()+ "\n\tTexto = " + this.getText() + 
